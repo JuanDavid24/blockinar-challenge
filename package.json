@@ -1,0 +1,27 @@
+{
+  "name": "blockinar-challenge",
+  "version": "1.0.0",
+  "description": "Aplicación para gestión interna de reservas de un hotel. ",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanDavid24/blockinar-challenge.git"
+  },
+  "author": "Juan David",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanDavid24/blockinar-challenge/issues"
+  },
+  "homepage": "https://github.com/JuanDavid24/blockinar-challenge#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.0",
+    "jquery": "^3.6.1"
+  }
+}
