@@ -1,0 +1,51 @@
+body {
+    background-color:rgb(223, 223, 223);
+}
+
+.bg-darkblue{
+    background-color: #00001e !important;
+}
+
+.bg-applegreen {
+    background-color: #00ff99 !important;
+}
+
+.text-darkblue {
+    color: #00001e !important;
+}
+
+.text-applegreen {
+    color: #00ff99 !important;
+}
+
+nav {
+    padding: 20px;
+}
+.navbar-brand, .navbar-brand:visited {
+ padding: 2px 14px;
+ color: #30ffac
+}
+
+.navbar-brand:hover {
+    color: #00ff99
+   }
+
+.nav-link, .nav-link:visited {
+    color: rgb(160, 160, 160);
+}
+
+.nav-item {
+    color: #6ffbc3;
+}
+
+.active .nav-link { 
+    color: #ffffff;
+}
+
+.nav-link:hover {
+    color: #6ffbc3;
+}
+
+.nav-link:active {
+    color: #0e6743;     
+} 
