@@ -8,6 +8,7 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-dark navbar-expand-md bg-darkblue fixed-top" >
       <a class="navbar-brand nav-link-light" href="#">Booking Admin</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +23,85 @@
         </ul>
       </div>
     </nav>
-   
+    <!-- Cards -->
+    <div class="container my-4">
+      <div class="row justify-content-center text-center">
+
+        <div class="card" style="width: 18rem;">
+          <img src="img/booking.png" class="card-img-top menu-card" alt="bookings">
+          <div class="card-body">
+            <h5 class="card-title"> Reservas </h5>            
+            <button class="btn btn-dark mb-2 px-3" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#booking-menu" aria-expanded="false" 
+              aria-controls="booking-menu"> Acciones
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+              </svg>
+            </button> 
+           
+            <div class="collapse collapse-vertical" id="booking-menu">
+              <a class="btn btn-outline-dark btn-menu" type="button"  
+                href="./bookings.html#new"> Nueva
+              </a>
+              <a class="btn btn-outline-dark btn-menu" type="button"  
+                href="./bookings.html#list"> Listar
+              </a>
+              <a class="btn btn-outline-dark btn-menu" type="button"  
+                href="./bookings.html#search"> Buscar/editar
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+          <img src="img/room.png" class="card-img-top menu-card" alt="rooms">
+          <div class="card-body">
+            <h5 class="card-title"> Habitaciones </h5>
+            <button class="btn btn-dark mb-2 px-3" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#rooms-menu" aria-expanded="false" 
+              aria-controls="rooms-menu"> Acciones
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+              </svg>
+            </button> 
+
+            <div class="collapse collapse-vertical" id="rooms-menu">
+              <a class="btn btn-outline-dark btn-menu" type="button"  
+                href="./rooms.html#list"> Listar
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card" style="width: 18rem;">
+          <img src="img/stats.png" class="card-img-top menu-card" alt="stats">
+          <div class="card-body">
+            <h5 class="card-title"> Estadísticas </h5>
+            <button class="btn btn-dark mb-2 px-3" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#stats-menu" aria-expanded="false" 
+              aria-controls="stats-menu"> Acciones
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+              </svg>
+            </button> 
+
+            <div class="collapse collapse-vertical" id="stats-menu">
+              <a class="btn btn-outline-dark btn-menu" type="button"  
+                href="./stats.html#montly-bookings"> Reservas del mes
+              </a>
+              <a class="btn btn-outline-dark btn-menu" type="button"  
+                href="./stats.html#daily-room-occupation"> Ocupación
+              </a>
+              <a class="btn btn-outline-dark btn-menu" type="button"  
+                href="./stats.html#daily-revenue"> Ingresos
+              </a>
+            </div>
+
+          </div>
+        </div>
+        
+      </div>
+    </div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
