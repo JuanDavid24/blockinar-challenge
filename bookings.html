@@ -7,16 +7,46 @@
         <title>Booking App</title>
         <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         <link href="css/styles.css" rel="stylesheet">
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+        <script src="node_modules/axios/dist/axios.min.js"></script> 
+        <script src="./js/bookings.js"></script>
       </head>
 </head>
 <body>
 
-    <h2>Obtener todas las reservas</h2>
-    <button id="button">Go</button>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="node_modules/axios/dist/axios.min.js"></script>
   
-    <script src="./bookings.js"></script>
+  
+  <h2>Obtener todas las reservas</h2>
+  <button class="btn btn-dark" id="get-bookings-btn">Go</button>
+  <div class="dropdown">
+      <button class="btn btn-outline-dark dropdown-toggle" type="button" id="sort-by-dropdown-btn" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="sort-by-dropdown-btn">
+        <li><button class="dropdown-item" id="sort-by-name-btn">Nombre</button></li>
+      </ul>
+    </div>
+        
+    <div id="bookings-result">
+        <table class="table table-striped" id="bookings-table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Fecha check in</th>
+                <th scope="col">Fecha check out</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Nº huéspedes</th>
+                <th scope="col">Precio por noche</th>
+                <th scope="col">ID habitación</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+          </table>
+    </div>
 </body>
 </html>
