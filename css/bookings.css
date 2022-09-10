@@ -1,6 +1,18 @@
-.pill-btn{
-    /* background-color: rgb(127, 255, 127) !important; */
-    color: black;
+/* nav-pills */
+.nav-pills .nav-link{
+    background-color: #00001e !important; 
+    color: #ffffff;
     padding: 0.5rem 1rem;
-    margin: 0.5rem;
+    margin: 15px 10px 0px 10px;
+    width: 150px;
+    border-color:#00001e;
+    border-width: 1px;
 }
+.nav-pills .nav-link:not(.active){
+    background-color: #44445a !important; 
+}
+
+.nav-pills .nav-link:hover {
+    color: #00ff99;
+    background-color: #0c1235 !important
+   }
