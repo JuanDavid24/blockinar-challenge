@@ -1,7 +1,13 @@
 jQuery( () => {
-    $("#get-bookings-btn").on("click", async () => {
-        $("#tbody").empty() //limpiar tabla
-        get_all_bookings();  
+    $("#pill-list-bookings-tab").on("click", () => {
+        $("#tbody").empty(); //limpiar tabla
+        get_all_bookings();
+        $("#refresh-btn").show();
+    });
+    
+    $("#refresh-btn").on("click", async () => {
+        $("#tbody").empty(); //limpiar tabla
+        get_all_bookings();
     });
 
     $("#sort-by-name-btn").on("click", () => {
@@ -19,7 +25,7 @@ const get_from_API = async ( URL, params='' ) => {
 
 // --- Obtiene todas las reservas en formato JSON y las muestra en una tabla ---
 async function get_all_bookings() {
-    get_from_API('https://api-challenge.blockinar.io/bookings')
+    await get_from_API('https://api-challenge.blockinar.io/bookings')
         .then(bookings => {
             sessionStorage.setItem('bookings', JSON.stringify(bookings));
             bookings.forEach(booking => booking_to_table_row(booking));

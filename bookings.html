@@ -7,46 +7,90 @@
         <title>Booking App</title>
         <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         <link href="css/styles.css" rel="stylesheet">
+        <link href="css/bookings.css" rel="stylesheet">
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         <script src="node_modules/axios/dist/axios.min.js"></script> 
         <script src="./js/bookings.js"></script>
       </head>
-</head>
+    </head>
 <body>
-
-  
-  
-  <h2>Obtener todas las reservas</h2>
-  <button class="btn btn-dark" id="get-bookings-btn">Go</button>
-  <div class="dropdown">
-      <button class="btn btn-outline-dark dropdown-toggle" type="button" id="sort-by-dropdown-btn" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="sort-by-dropdown-btn">
-        <li><button class="dropdown-item" id="sort-by-name-btn">Nombre</button></li>
+  <nav class="navbar navbar-dark navbar-expand-md bg-darkblue fixed-top" >
+  <!-- Navbar -->
+    <a class="navbar-brand nav-link-light" href="#">Booking Admin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"> <a class="nav-link" href="#">Home</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="./bookings.html">Reservas</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="./rooms.html">Habitaciones</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="./stats.html">Estadísticas</a> </li>          
       </ul>
     </div>
-        
-    <div id="bookings-result">
-        <table class="table table-striped" id="bookings-table">
+  </nav>
+  <!-- Nav pills para tabs -->
+  <ul class="nav nav-pills" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active pill-btn" id="pill-new-booking-tab" data-bs-toggle="pill" data-bs-target="#new-booking" type="button" role="tab" aria-controls="new-booking" aria-selected="false">Nueva</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link pill-btn" id="pill-list-bookings-tab" data-bs-toggle="pill" data-bs-target="#list-bookings" type="button" role="tab" aria-controls="list-bookings" aria-selected="true">Listar</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link pill-btn" id="pill-search-booking-tab" data-bs-toggle="pill" data-bs-target="#search-booking" type="button" role="tab" aria-controls="search-booking" aria-selected="false">Buscar y editar</button>
+    </li>
+  </ul>
+  <!-- Contenido de las tabs -->
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="new-booking" role="tabpanel" aria-labelledby="pill-new-booking-tab" tabindex="0">
+      ...
+    </div>
+    <div class="tab-pane fade show" id="list-bookings" role="tabpanel" aria-labelledby="pill-list-bookings-tab" tabindex="0">
+      
+      <h2>Obtener todas las reservas</h2>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-outline-dark mx-2 collapse" id="refresh-btn">Actualizar
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+            <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+          </svg>
+        </button>
+        <div class="dropdown">
+          <button class="btn btn-outline-dark dropdown-toggle mx-2" type="button" id="sort-by-dropdown-btn" data-bs-toggle="dropdown" aria-expanded="false">
+            Ordenar por 
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="sort-by-dropdown-btn">
+            <li><button class="dropdown-item" id="sort-by-name-btn">Cliente</button></li>
+          </ul>
+        </div>
+      </div>
+        <div id="bookings-result">
+          <table class="table table-striped" id="bookings-table">
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Fecha check in</th>
-                <th scope="col">Fecha check out</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Nº huéspedes</th>
-                <th scope="col">Precio por noche</th>
-                <th scope="col">ID habitación</th>
-              </tr>
-            </thead>
-            <tbody id="tbody">
-
-            </tbody>
-          </table>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Fecha check in</th>
+                    <th scope="col">Fecha check out</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Nº huéspedes</th>
+                    <th scope="col">Precio por noche</th>
+                    <th scope="col">ID habitación</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
+                  
+                </tbody>
+              </table>
+        </div>
+      </div>
+    
+    <div class="tab-pane fade" id="search-booking" role="tabpanel" aria-labelledby="pill-search-booking-tab" tabindex="0">
+      ...
     </div>
+  </div>
 </body>
 </html>

@@ -1,8 +1,11 @@
+/* --- Estilos generales de la pagina --- */ 
+
 body {
     padding-top: 56px;
     background-color:rgb(223, 223, 223);
-}
 
+}
+/* Custom colors: backgrouds and text */ 
 .bg-darkblue{
     background-color: #00001e !important;
 }
@@ -19,46 +22,36 @@ body {
     color: #00ff99 !important;
 }
 
+/* Nav */
 nav {
     padding: 20px;
 }
-.navbar-brand, .navbar-brand:visited {
+nav .navbar-brand, .navbar-brand:visited {
  padding: 2px 14px;
  color: #30ffac
 }
 
-.navbar-brand:hover {
+nav .navbar-brand:hover {
     color: #00ff99
    }
 
-.nav-link, .nav-link:visited {
+nav .nav-link, nav .nav-link:visited {
     color: rgb(160, 160, 160);
     padding-left: 14px;
 }
 
-.nav-item {
+nav .nav-item {
     color: #6ffbc3;
 }
 
-.active .nav-link { 
+nav .active .nav-link { 
     color: #ffffff;
 }
 
-.nav-link:hover {
+nav .nav-link:hover {
     color: #6ffbc3;
 }
 
-.nav-link:active {
+nav .nav-link:active {
     color: #0e6743;     
 } 
-
-.btn-menu {
-    width: 100%;
-    margin-bottom: 2px;
-}
-
-.card {
-    padding: 2rem 2rem 0.5rem 2rem;
-    border-radius: 8%;
-    margin: 2% 1% 2% 1%
-}
