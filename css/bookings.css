@@ -16,3 +16,19 @@
     color: #00ff99;
     background-color: #0c1235 !important
    }
+
+/* botones listar bookings */
+.list-buttons-misc {
+    max-height: 36px;
+}
+
+#filter-buttons-toggler {
+    border-radius: 30px;
+    padding: 10px 15px;
+    background: #07050c;
+    color: ghostwhite
+}
+
+#list-by-date-form {
+    max-width: 500px;
+}
