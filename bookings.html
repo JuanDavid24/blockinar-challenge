@@ -11,6 +11,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="node_modules/axios/dist/axios.min.js"></script> 
     <script src="./js/bookings.js"></script>  
+
     <!-- Data Tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/date-1.1.2/datatables.min.css"/>
  
@@ -47,11 +48,11 @@
   <hr>
   <!-- Contenido de las tabs -->
   <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="new-booking" role="tabpanel" aria-labelledby="pill-new-booking-tab" tabindex="0">
+    <div class="tab-pane fade show" id="new-booking" role="tabpanel" aria-labelledby="pill-new-booking-tab" tabindex="0">
       ...
     </div>
     <!-- Tab "listar" -->
-    <div class="tab-pane fade show" id="list-bookings" role="tabpanel" aria-labelledby="pill-list-bookings-tab" tabindex="0">
+    <div class="tab-pane fade show" id="list-bookings" role="tabpanel" aria-labelledby="pill-list-bookings-tab" tabindex="1">
       <h3>Lista de reservas</h3>
       
       <div class="d-flex justify-content-between align-items-center bd-highlight">
@@ -89,21 +90,6 @@
             </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center">
-        <div class="card card-body collapse"  id="list-by-date-form">
-          <form>
-            <span class="form-group">
-              <div class="input-group date" data-provide="datepicker">
-                <input type="date" class="form-control">
-              </div>
-            </span>
-            
-            <div class="justify-self-end my-1">
-              <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-          </form>
-      </div>
-      </div>
         <div id="bookings-result">
           <table class="table table-striped" id="booking-table">
             <thead>
@@ -125,9 +111,76 @@
               </table>
         </div>
       </div>
-    
-    <div class="tab-pane fade" id="search-booking" role="tabpanel" aria-labelledby="pill-search-booking-tab" tabindex="0">
-      ...
+    <!-- Tab "editar" -->
+    <div class="tab-pane fade show active" id="edit-booking" role="tabpanel" aria-labelledby="pill-edit-booking-tab" tabindex="2">
+      <h3 class="m-2">Buscar reserva  y editar</h3>
+      <div class="d-flex justify-content-center">
+        <div class="card card-body mb-3"  id="search-by-id-form">
+          <form id="search-booking-form">
+            <label>Ingrese el ID de la reserva</label>
+              <span class="input-group">
+                <input type="number" class="form-control" placeholder="Nº ID">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </span>
+          </form>
+        </div>
+      </div>
+      <hr>
+      <form class="row gx-4 gy-3 mx-5 my-2" id="edit-form">
+        <div class="col-md-2">
+          <label for="id-to-edit" class="form-label">ID N°</label>
+          <input class="form-control" id="id-to-edit"type="number" aria-label="readonly input" readonly>
+        </div>
+        <div class="col-md-5">
+          <label for="check-in-to-edit" class="form-label">Fecha de check in</label>
+          <input type="text" class="form-control" id="check-in-to-edit" aria-label="readonly input" readonly>
+        </div>
+        <div class="col-md-5">
+          <label for="check-out-to-edit" class="form-label">Fecha de check out</label>
+          <input type="text" class="form-control" id="check-out-to-edit" aria-label="readonly input" readonly>
+        </div>
+      
+      <div class="col-md-4">
+        <label for="guests-to-edit" class="form-label">Número de huéspedes</label>
+        <input type="number" class="form-control" id="guests-to-edit" aria-label="readonly input" readonly>
+      </div>
+      <div class="col-md-4">
+        <label for="room-id-to-edit" class="form-label">ID habitación</label>
+        <input type="number" class="form-control" id="room-id-to-edit" aria-label="readonly input" readonly>
+      </div>
+      <div class="col-md-4">
+        <label for="price-to-edit" class="form-label">Precio por noche</label>
+        <input type="number" class="form-control" id="price-to-edit" aria-label="readonly input" readonly>
+      </div>
+      <div class="col-md-4">
+        <label for="first-name-to-edit" class="form-label">Nombre</label> 
+        <span class="badge text-bg-success"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+        </svg></span>
+        <input type="text" class="form-control" id="first-name-to-edit">
+      </div>
+      <div class="col-md-4">
+        <label for="last-name-to-edit" class="form-label">Apellido</label>
+        <span class="badge text-bg-success"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+        </svg></span>
+        <input type="text" class="form-control" id="last-name-to-edit">
+      </div>
+      <div class="col-md-4">
+        <label for="status-to-edit" class="form-label">Estado de la reserva</label>
+        <span class="badge text-bg-success"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+        </svg></span>
+        <select id="status-to-edit" class="form-select">
+          <option>confirmed</option>
+          <option>in house</option>
+          <option>cancelled</option>
+          <option>checked out</option>
+        </select>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
     </div>
   </div>
 </body>
