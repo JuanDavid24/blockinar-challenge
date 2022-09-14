@@ -1,13 +1,15 @@
 const DATETIME_FROM_PATTERN = "YYYY-MM-DD'T'HH:mm:ss";
 const DATETIME_TO_PATTERN   = "DD/MM/YYYY HH:mm:ss";
 jQuery( () => {
-
+    
     $("#pill-list-bookings-tab").on("click", () => {
         let table_is_initialized = $.fn.DataTable.isDataTable( '#booking-table' )
           
         if (!table_is_initialized) {
             let booking_table = $('#booking-table').DataTable({
                 processing: true,
+                
+
                 ajax: {
                     "url": "https://api-challenge.blockinar.io/bookings",
                     dataSrc:"",
@@ -16,25 +18,19 @@ jQuery( () => {
                     { data: 'id'},
                     { data: 'first_name'},
                     { data: 'last_name' },
-                    { 
-                        data: 'check_in_date',
-                        render: $.fn.dataTable.render.moment(DATETIME_FROM_PATTERN, DATETIME_TO_PATTERN)
-                    },
-                    { 
-                        data: 'check_out_date',
-                        // render: $.fn.dataTable.render.moment(DATETIME_FROM_PATTERN, DATETIME_TO_PATTERN), 
-                    },
+                    { data: 'check_in_date',
+                      render: $.fn.dataTable.render.datetime()},
+                    { data: 'check_out_date',
+                      render: $.fn.dataTable.render.datetime()},
                     { data: 'booking_status' },
                     { data: 'number_of_guests' },
                     { data: 'price_per_night' },
                     { data: 'room_id' },
                 ],
-
             });
         }
         // --- Actualizo tabla ---
-        else {$('#booking-table').DataTable().ajax.reload()}
-        
+        else $('#booking-table').DataTable().ajax.reload()
     });
 
     $("#list-by-date-form").on("submit", function(){
@@ -47,8 +43,9 @@ jQuery( () => {
     $("#refresh-btn").on("click", async () => {
         // $("#tbody").empty(); //limpiar tabla
         // get_all_bookings();
-
-        $('#booking-table').DataTable().ajax.reload();
+        const myDate = moment('2021-10-27T12:00:00', DATETIME_FROM_PATTERN).toDate();
+        console.log(myDate)
+        // $('#booking-table').DataTable().ajax.reload();
     });
 
     $("#sort-by-name-btn").on("click", () => {
