@@ -42,13 +42,13 @@
       <button class="nav-link pill-btn s-200" id="pill-list-bookings-tab" data-bs-toggle="pill" data-bs-target="#list-bookings" type="button" role="tab" aria-controls="list-bookings" aria-selected="true">Listar</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link pill-btn s-200" id="pill-search-booking-tab" data-bs-toggle="pill" data-bs-target="#search-booking" type="button" role="tab" aria-controls="search-booking" aria-selected="false">Buscar y editar</button>
+      <button class="nav-link pill-btn s-200" id="pill-edit-booking-tab" data-bs-toggle="pill" data-bs-target="#edit-booking" type="button" role="tab" aria-controls="search-booking" aria-selected="false">Buscar y editar</button>
     </li>
   </ul>
   <hr>
   <!-- Contenido de las tabs -->
   <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show" id="new-booking" role="tabpanel" aria-labelledby="pill-new-booking-tab" tabindex="0">
+    <div class="tab-pane fade show active" id="new-booking" role="tabpanel" aria-labelledby="pill-new-booking-tab" tabindex="0">
       ...
     </div>
     <!-- Tab "listar" -->
@@ -112,7 +112,7 @@
         </div>
       </div>
     <!-- Tab "editar" -->
-    <div class="tab-pane fade show active" id="edit-booking" role="tabpanel" aria-labelledby="pill-edit-booking-tab" tabindex="2">
+    <div class="tab-pane fade show" id="edit-booking" role="tabpanel" aria-labelledby="pill-edit-booking-tab" tabindex="2">
       <h3 class="m-2">Buscar reserva  y editar</h3>
       <div class="d-flex justify-content-center">
         <div class="card card-body mb-3"  id="search-by-id-form">
@@ -177,8 +177,9 @@
           <option>cancelled</option>
           <option>checked out</option>
         </select>
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-light bg-applegreen px-4">Enviar</button>
         </div>
       </form>
     </div>

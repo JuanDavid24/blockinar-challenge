@@ -29,9 +29,10 @@ jQuery( () => {
     });
 
     $("#search-booking-form").on("submit", () => { 
+        event.preventDefault();
         let input = $("#search-booking-form input");
         if ( input.val() ) {
-            get_from_API( 'https://api-challenge.blockinar.io/bookings/' + input.val() )
+            get_from_API('get', 'https://api-challenge.blockinar.io/bookings/' + input.val() )
             .then(result => {
                 $("#id-to-edit").val(result.id);
                 $("#check-in-to-edit").val(result.check_in_date);
@@ -46,8 +47,30 @@ jQuery( () => {
             })
             .catch(
                 err => alert(`No se pudo completar la solicitud. Error: ${err}`)
-            );}
-      });
+            );}      
+        });
+        $("#edit-form").on("submit", () => {
+            event.preventDefault();
+            let id_to_edit = $("#id-to-edit").val()
+            let body_request = {
+                booking_status: $("#status-to-edit").val(),
+                checkid_to_edit_in_date: $("#check-in-to-edit").val(),
+                check_out_date: $("#check-out-to-edit").val(),
+                first_name: $("#first-name-to-edit").val(),
+                last_name: $("#last-name-to-edit").val(),
+                number_of_guests:$("#guests-to-edit").val(),
+                price_per_night: $("#price-to-edit").val()
+            };      
+            console.log(body_request)
+            let URL = 'https://api-challenge.blockinar.io/bookings/update/'+id_to_edit;
+            req_to_API('put', URL, body_request)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(
+                err => alert(`No se pudo completar la solicitud. Error: ${err}`)
+            );      
+        });
 
     $("#refresh-btn").on("click", async () => {
         let table_is_initialized = $.fn.DataTable.isDataTable( '#booking-table' )
@@ -63,18 +86,22 @@ jQuery( () => {
 });
 
 // Realiza un GET a un endpoint y devuelve la data del response
-const get_from_API = async ( URL, params='' ) => {
-    const response = await axios.get( URL + params );
+const get_from_API = async ( method, URL, params='' ) => {
+    const response = await axios[method]( URL + params );
     return response.data
 }
-const post_to_API = async ( URL, params='' ) => {
-    const response = await axios.post( URL + params );
+const req_to_API = async ( http_method, URL, body ) => {
+    const response = await axios({
+        method: http_method,
+        url: URL,
+        data: body
+      });
     return response.data
 }
 
 // --- Obtiene todas las reservas en formato JSON y las muestra en una tabla ---
 async function get_all_bookings() {
-    await get_from_API('https://api-challenge.blockinar.io/bookings')
+    await get_from_API('get', 'https://api-challenge.blockinar.io/bookings')
         .then(bookings => {
             sessionStorage.setItem('bookings', JSON.stringify(bookings));
             // bookings.forEach(booking => booking_to_table_row(booking));
